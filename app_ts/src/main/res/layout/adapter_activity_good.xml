@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:layout_margin="5dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/ivGoodImg"
+        android:layout_width="163dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/img_square" />
+
+    <TextView
+        android:id="@+id/tvGoodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:lines="2"
+        android:textColor="@color/colorGrayText28"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvGoodPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorRed"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvGoodMerchname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:textColor="@color/colorGrayText88"
+        android:textSize="13sp" />
+
+</LinearLayout>

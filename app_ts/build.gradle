@@ -1,0 +1,129 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+
+    defaultConfig {
+        applicationId "com.haoniu.zzx.app_ts"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 18
+        versionName "1.4.5"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // 混淆文件的位置
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("haitao.jks")
+            storePassword "android"
+            keyAlias "haitao"
+            keyPassword "android"
+            v2SigningEnabled false
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        // as noted by @Vishnuvathsan you may also need to include
+        // variations on the file name. It depends on your dependencies.
+        // Some other common variations on notice and license file names
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/rxjava'
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+repositories {
+    jcenter()
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(':AndroidBase')
+    // ~80KB
+    compile project(':banner')
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.github.promeg:tinypinyin:1.0.0'
+    compile 'com.lzy.net:okgo:3.0.2'
+    compile 'com.lzy.net:okrx2:2.0.2'
+    compile 'com.lzy.net:okserver:2.0.2'
+    compile 'com.readystatesoftware.chuck:library:1.0.4'
+    compile 'com.meiqia:meiqiasdk:3.4.3@aar'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
+    compile 'com.just.agentweb:agentweb:1.0.3'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.6'
+    testCompile 'junit:junit:4.12'
+    //    compile project(':bDIntegrationSDK_LibProject')
+    //    compile(name: 'autoupdatesdk-release', ext: 'aar')
+    //    compile(name: 'BDSoleAgencySDK_V1.1_20170504', ext: 'aar')
+    compile project(':stickylibrary')
+    compile('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
+    //    compile 'com.github.bumptech.glide:glide:4.3.1'
+    //    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+    compile 'com.github.Awent:PhotoPick-Master:v1.095'
+    compile 'com.github.everhad:AndroidRatingStar:v1.0.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
+    compile files('libs/360update-7.0.3.jar')
+    compile files('libs/jpush-android-3.1.6.jar')
+    compile files('libs/jcore-android-1.2.5.jar')
+    compile files('libs/umeng-common-1.5.4.jar')
+    compile files('libs/umeng-share-core-6.9.3.jar')
+    compile files('libs/umeng-sharetool-6.9.3.jar')
+    compile files('libs/umeng-analytics-7.5.4.jar')
+    compile files('libs/umeng-share-QQ-full-6.9.3.jar')
+    compile files('libs/umeng-share-wechat-full-6.9.3.jar')
+    compile files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
+    compile files('libs/umeng-share-sina-full-6.9.3.jar')
+    compile files('libs/weiboSDKCore.jar')
+}
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+        google()
+    }
+}

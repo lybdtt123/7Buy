@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- 配置Android提供的theme -->
+        <!--<item name="android:listPreferredItemHeight">?attr/qmui_list_item_height_higher</item>-->
+        <!--<item name="android:listPreferredItemHeightSmall">?attr/qmui_list_item_height</item>-->
+        <!--<item name="qmui_topbar_title_color">@color/colorWhite</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+    </style>
+    <style name="tvTitle" parent="QMUI.TopBar">
+        <item name="qmui_topbar_title_color">@color/colorWhite</item>
+        <item name="qmui_topbar_bg_color">@color/colorBlack</item>
+    </style>
+
+</resources>

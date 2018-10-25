@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- &lt;  <   &gt;  >  -->
+    <data>
+
+        <import type="com.haoniu.zzx.uidemo.model.UserModel" />
+
+        <variable
+            name="users"
+            type="java.util.List&lt;UserModel&gt;" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.haoniu.zzx.uidemo.activity.DataBingdingActivity">
+
+        <include
+            layout="@layout/layout_databing"
+            app:user="@{users[0]}" />
+
+        <include
+            layout="@layout/layout_databing"
+            app:user="@{users[1]}" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.haoniu.zzx.uidemo.activity.FloatLayoutActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btAdd"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="+"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusBottomLeft="10dp"
+            app:qmui_radiusTopLeft="10dp" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btReduce"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="-"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_isRadiusAdjustBounds="false" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btLeft"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="Left"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_isRadiusAdjustBounds="false" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btCen"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="Cen"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_isRadiusAdjustBounds="false" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btRight"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="Right"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_isRadiusAdjustBounds="false" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btOne"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="One"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_isRadiusAdjustBounds="false" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btMore"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:text="More"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusBottomRight="10dp"
+            app:qmui_radiusTopRight="10dp" />
+
+    </LinearLayout>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <com.qmuiteam.qmui.widget.QMUIFloatLayout
+           android:id="@+id/mFloatLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           app:qmui_childHorizontalSpacing="10dp"
+           app:qmui_childVerticalSpacing="10dp" />
+   </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.haoniu.zzx.uidemo.activity.ButtonActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height" />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="10dp"
+        android:text="圆角为高度一半"
+        android:textColor="@color/qmui_config_color_black"
+        app:qmui_isRadiusAdjustBounds="true" />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="10dp"
+        android:text="圆角为高度一半"
+        android:textColor="@color/qmui_config_color_black"
+        app:qmui_radius="5dp" />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="10dp"
+        android:text="圆角为高度一半"
+        app:qmui_backgroundColor="@color/qmui_config_color_black"
+        app:qmui_radius="15dp" />
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingTop="10dp"
+        android:text="圆角为高度一半"
+        app:qmui_borderColor="@color/qmui_config_color_black"
+        app:qmui_borderWidth="3dp"
+        app:qmui_radius="15dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="左"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusTopLeft="15dp" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:text="右"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusTopRight="15dp" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="65dp"
+            android:text="左下"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusBottomLeft="15dp" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="65dp"
+            android:text="右下"
+            android:textColor="@color/qmui_config_color_black"
+            app:qmui_radiusBottomRight="15dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

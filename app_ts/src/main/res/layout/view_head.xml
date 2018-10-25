@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayBg"
+    android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/mBanner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#fff"
+        app:indicator_drawable_selected="@drawable/circle_red"
+        app:indicator_height="9dp"
+        app:indicator_margin="5dp"
+        app:indicator_width="9dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleViewIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:requiresFadingEdge="none"
+        android:scrollbars="vertical" />
+    <!--<com.haoniu.zzx.app_ts.view.VGridView-->
+    <!--android:id="@+id/gridViewIcon"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/white"-->
+    <!--android:descendantFocusability="afterDescendants"-->
+    <!--android:numColumns="4" />-->
+
+    <ImageView
+        android:id="@+id/ivImgBg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+    <!--<com.haoniu.zzx.app_ts.view.VGridView-->
+    <!--android:id="@+id/gridViewHot"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:descendantFocusability="afterDescendants"-->
+    <!--android:listSelector="@color/transparent"-->
+    <!--android:numColumns="4" />-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleViewHot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:requiresFadingEdge="none"
+        android:scrollbars="vertical" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:requiresFadingEdge="none"
+        android:scrollbars="vertical" />
+
+    <ImageView
+        android:id="@+id/ivImgGoodsBg"
+        android:layout_width="match_parent"
+        android:layout_height="130dp" />
+
+    <include layout="@layout/view_fix_head1" />
+
+</LinearLayout>

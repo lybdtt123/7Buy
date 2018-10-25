@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/android_base_select_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#565656"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <self.androidbase.views.SelfLinearLayout
+            android:id="@+id/android_base_sllCloseBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_close_white"
+            android:clickable="true"
+            android:visibility="gone"
+            app:pressedAlpha="0.3" />
+
+        <self.androidbase.views.SelfLinearLayout
+            android:id="@+id/android_base_sllAlbumBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:pressedAlpha="0.3">
+
+            <TextView
+                android:id="@+id/android_base_tvCurrAlbumName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="图片"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/ic_signal_white" />
+        </self.androidbase.views.SelfLinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+            <!--android:background="?attr/selectableItemBackground"-->
+            <TextView
+                android:id="@+id/android_base_tvConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="确定"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/android_base_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#444"
+            android:scrollbars="vertical">
+
+
+        </android.support.v7.widget.RecyclerView>
+
+        <FrameLayout
+            android:id="@+id/android_base_frameLayoutAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/android_base_viewback"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#aa000000"
+                android:clickable="true" />
+
+            <ScrollView
+                android:id="@+id/android_base_scrollViewAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_gravity="top"
+                android:background="#fff"
+                android:clickable="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/android_base_llAlbums"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+            </ScrollView>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/android_base_select_bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom"
+            android:background="#BB565656"
+            android:clickable="true"
+            android:orientation="horizontal">
+            android:background="?attr/selectableItemBackground"
+
+            <LinearLayout
+                android:id="@+id/android_base_llCamera"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="拍照"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/android_base_hScrollView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/android_base_llSelected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

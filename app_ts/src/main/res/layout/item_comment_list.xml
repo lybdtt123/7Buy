@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_heard"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:src="@mipmap/img_main55b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:paddingRight="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_nike_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_lv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="达人"
+                    android:textColor="@color/colorRed"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_commtent_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textColor="@color/colorGrayText"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+
+            <com.idlestar.ratingstar.RatingStarView
+                android:id="@+id/rs_view"
+                android:layout_width="120dp"
+                android:layout_height="18dp"
+                android:layout_centerInParent="true"
+                android:background="#fff"
+                app:cornerRadius="4dp"
+                app:drawStrokeForEmptyStar="false"
+                app:drawStrokeForHalfStar="true"
+                app:enableSelectRating="true"
+                app:rating="1"
+                app:starBackgroundColor="#E8E8E8"
+                app:starForegroundColor="#FFD700"
+                app:starMargin="5dp"
+                app:starNum="5"
+                app:starThickness="0.7"
+                app:strokeColor="#457DD7"
+                app:strokeWidth="2px" />
+
+
+            <TextView
+                android:id="@+id/tv_commtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:text=""
+                android:textColor="@color/colorGrayText48"
+                android:textSize="14sp" />
+
+
+            <com.haoniu.zzx.app_ts.view.MyRecyclerView
+                android:id="@+id/my_rc_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/layout_xian" />
+
+    <TextView
+        android:id="@+id/tv_shop_return"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:text="商家回复："
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <include layout="@layout/layout_xian" />
+
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:text="更多>>"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+    <include layout="@layout/layout_xian" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey_bg" />
+
+    <include layout="@layout/layout_xian" />
+
+</LinearLayout>

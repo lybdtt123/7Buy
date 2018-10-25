@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">7购商城</string>
+    <string name="gravity_left">left</string>
+    <string name="gravity_center">center</string>
+    <string name="gravity_right">right</string>
+    <string name="hint_comment">宝贝满足你的期待吗？说说你的使用心得，分享给想买的他们吧</string>
+</resources>

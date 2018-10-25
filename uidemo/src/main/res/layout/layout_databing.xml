@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.haoniu.zzx.uidemo.model.UserModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="com.haoniu.zzx.uidemo.activity.DataBingdingActivity">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:loadToImage="@{user.icon}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="@{(view) -> user.clickName(view,user.trueName+`(cl)`)}"
+            android:text="@{user.trueName??`cl`}"
+            android:textColor="@{user.vip?0xFFDC2F2F:0xFF000000}"
+            android:textSize="15sp" />
+        <!-- &lt;  <   &gt;  >  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onLongClick="@{user.longClickName}"
+            android:text="@{ user.nickName+`(`+user.trueName+`)` }"
+            android:textColor="@{user.level &gt;3 ? 0xFF2D9FF0:0xFF000000}"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{user.email}"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</layout>

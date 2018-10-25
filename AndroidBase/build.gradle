@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    packagingOptions {
+        exclude 'META-INF/maven/com.nineoldandroids/library/pom.xml'
+        exclude 'META-INF/maven/com.nineoldandroids/library/pom.properties'
+    }
+
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile files('libs/uk-co-senab-photoview.jar')
+    compile files('libs/fastjson-1.1.39.jar')
+    compile 'com.android.support:appcompat-v7:24.2.0'
+        compile 'com.android.support:multidex:1.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+    //    compile 'com.jph.takephoto:takephoto_library:4.0.3'
+    compile files('libs/AMap_Location_v2.3.0_20160112.jar')
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.6'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile project(':takephoto_library')
+}

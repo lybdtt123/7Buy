@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00a0e9</color>
+    <color name="colorPrimaryDark">#00a0e9</color>
+    <color name="colorAccent">#00a0e9</color>
+
+    <color name="colorBg">#F0EFF5</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="partTranslucent">#39000000</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="colorBlueBg">#5C91EF</color>
+    <color name="colorMainBlueLight">#A4C2F6</color>
+    <color name="colorGreenbg">#48D515</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorCash">#FFF0D1</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGray">#e2e2e2</color>
+    <color name="colorBlue">#4cd7dc</color>
+    <color name="colorLightGray">#fbfbfb</color>
+    <color name="colorGrayM">#ececec</color>
+    <color name="colorRed">#F93D5A</color>
+    <color name="colorDeepRed">#FF0000</color>
+    <color name="colorRedSale">#EC6969</color>
+    <color name="colorLightRed">#FF828A</color>
+    <color name="colorDarkBlue">#0A67AF</color>
+    <color name="colorDialogBlue">#007AFF</color>
+    <color name="colorDarkYellow">#A08A59</color>
+    <color name="colorLightOrange">#FFBE36</color>
+    <color name="colorLightYellow">#FFB60A</color>
+    <color name="colorLightBlue">#3BB4FF</color>
+    <color name="colorDarkGreen">#4FD04C</color>
+    <color name="colorDarkOrange">#FF7A00</color>
+    <color name="colorDark">#020F1F</color>
+    <!--<color name="colorBlueBg">#09A6ED</color>-->
+    <color name="colorOrange">#FFC21D</color>
+    <color name="colorBlueDeep">#0271A3</color>
+    <color name="colorBlack45">#454545</color>
+    <color name="colorGrayF0">#F0F0F0</color>
+    <color name="colorGrayText">#AFAFAF</color>
+    <color name="colorGrayF2">#F2F2F2</color>
+    <color name="colorGrayText28">#282828</color>
+    <color name="colorGrayText88">#888888</color>
+    <color name="colorGrayText68">#686868</color>
+    <color name="colorGrayText48">#484848</color>
+    <color name="colorGrayTitleF9">#F9F9F9</color>
+    <color name="colorGrayCB">#CBCBCB</color>
+    <color name="grey">#a6aebb</color>
+    <color name="colorGrayBg">#F6F6F6</color>
+    <color name="grey_bg">#90eeeeee</color>
+    <color name="colorLightGreen">#6FC6CD</color>
+</resources>

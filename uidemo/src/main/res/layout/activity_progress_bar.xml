@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.haoniu.zzx.uidemo.activity.ProgressBarActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height" />
+
+    <com.qmuiteam.qmui.widget.QMUIProgressBar
+        android:id="@+id/mProgressBarRect"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        app:qmui_background_color="@color/colorGray"
+        app:qmui_max_value="100"
+        app:qmui_progress_color="@color/app_color_theme_3"
+        app:qmui_type="type_rect" />
+
+    <com.qmuiteam.qmui.widget.QMUIProgressBar
+        android:id="@+id/mProgressBarCicle"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        app:qmui_background_color="@color/colorGray"
+        app:qmui_max_value="100"
+        app:qmui_progress_color="@color/app_color_theme_4"
+        app:qmui_stroke_width="5dp"
+        app:qmui_type="type_circle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/btStart"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="start" />
+
+        <Button
+            android:id="@+id/btPause"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="pause" />
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="back" />
+    </LinearLayout>
+</LinearLayout>

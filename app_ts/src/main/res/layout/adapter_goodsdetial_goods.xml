@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:id="@+id/llGoodsContent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivGoodsImg"
+        android:layout_width="163dp"
+        android:layout_height="163dp" />
+
+    <TextView
+        android:id="@+id/tvGoodsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/colorGrayText48"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvGoodsMarketPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/colorRed"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tvGoodsInlandPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/colorGrayText"
+        android:textSize="13sp" />
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="qmui_topbar_title_color">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGray">#CDCDCD</color>
+    <color name="colorGray6">#666666</color>
+    <color name="app_color_blue">#00A8E1</color>
+
+    <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->
+    <color name="app_color_theme_4">#9FD661</color> <!-- Grass -->
+    <color name="transparent">#00000000</color>
+</resources>

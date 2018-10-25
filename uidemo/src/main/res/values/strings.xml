@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UIDemo</string>
+
+    <string-array name="pageNames">
+        <item>com.haoniu.zzx.uidemo.activity.MainActivity</item>
+        <item>com.haoniu.zzx.uidemo.icon_tag_1212</item>
+        <item>com.haoniu.zzx.uidemo.newsLuncherActivity</item>
+    </string-array>
+</resources>
