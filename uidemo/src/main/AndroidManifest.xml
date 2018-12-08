@@ -81,10 +81,10 @@
         <activity android:name=".activity.DataBingdingActivity" />
         <activity android:name=".activity.RetrofitActivity" />
         <activity android:name=".activity.DiyViewActivity" />
-        <activity
-            android:name="com.tencent.bugly.beta.ui.BetaActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@android:style/Theme.Translucent" />
+        <!--<activity-->
+            <!--android:name="com.tencent.bugly.beta.ui.BetaActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize|locale"-->
+            <!--android:theme="@android:style/Theme.Translucent" />-->
 
         <!--<provider-->
         <!--android:name="android.support.v4.content.FileProvider"-->

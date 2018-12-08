@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/7Buy.iml" filepath="$PROJECT_DIR$/7Buy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidBase/AndroidBase.iml" filepath="$PROJECT_DIR$/AndroidBase/AndroidBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_ts/app_ts.iml" filepath="$PROJECT_DIR$/app_ts/app_ts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/floatwindow/floatwindow.iml" filepath="$PROJECT_DIR$/floatwindow/floatwindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/speechDemo/speechDemo.iml" filepath="$PROJECT_DIR$/speechDemo/speechDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stickylibrary/stickylibrary.iml" filepath="$PROJECT_DIR$/stickylibrary/stickylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/takephoto_library/takephoto_library.iml" filepath="$PROJECT_DIR$/takephoto_library/takephoto_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uidemo/uidemo.iml" filepath="$PROJECT_DIR$/uidemo/uidemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vlayout/vlayout.iml" filepath="$PROJECT_DIR$/vlayout/vlayout.iml" />
+    </modules>
+  </component>
+</project>

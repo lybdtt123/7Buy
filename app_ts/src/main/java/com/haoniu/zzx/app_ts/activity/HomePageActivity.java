@@ -1,25 +1,47 @@
 package com.haoniu.zzx.app_ts.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //
 
+import com.androidadvance.topsnackbar.TSnackbar;
 import com.bumptech.glide.Glide;
+import com.haoniu.zzx.app_ts.BaseFloatDailog;
+import com.haoniu.zzx.app_ts.MyFloatDialog;
 import com.haoniu.zzx.app_ts.R;
 import com.haoniu.zzx.app_ts.dialog.AdvantageDialog;
 import com.haoniu.zzx.app_ts.fragment.AgentWebFragment;
@@ -32,15 +54,40 @@ import com.haoniu.zzx.app_ts.http.HttpUtils;
 import com.haoniu.zzx.app_ts.http.JsonCallback;
 import com.haoniu.zzx.app_ts.myinterface.CommonEnity;
 import com.haoniu.zzx.app_ts.myinterface.EventInterface;
+import com.haoniu.zzx.app_ts.statusbar.ColorFinal;
+import com.haoniu.zzx.app_ts.statusbar.StatusBarUtil;
 import com.haoniu.zzx.app_ts.utils.PreferenceUtils;
 import com.haoniu.zzx.app_ts.utils.TrafficInfo;
 import com.lzy.okgo.model.Response;
+import com.meiqia.core.MQManager;
+import com.meiqia.core.MQMessageManager;
+import com.meiqia.core.bean.MQAgent;
+import com.meiqia.core.bean.MQMessage;
+import com.meiqia.core.callback.OnGetMessageListCallback;
+import com.meiqia.meiqiasdk.activity.MQConversationActivity;
+import com.meiqia.meiqiasdk.controller.MQController;
+import com.meiqia.meiqiasdk.controller.MessageReceiver;
+import com.meiqia.meiqiasdk.util.MQIntentBuilder;
+import com.pgyersdk.update.DownloadFileListener;
+import com.pgyersdk.update.PgyUpdateManager;
+import com.pgyersdk.update.UpdateManagerListener;
+import com.pgyersdk.update.javabean.AppBean;
 import com.qihoo.appstore.common.updatesdk.lib.UpdateHelper;
 import com.umeng.analytics.MobclickAgent;
+import com.yhao.floatwindow.FloatWindow;
+import com.yhao.floatwindow.MoveType;
+import com.yhao.floatwindow.PermissionListener;
+import com.yhao.floatwindow.Screen;
+import com.yhao.floatwindow.ViewStateListener;
+import com.yw.game.floatmenu.FloatItem;
+import com.yw.game.floatmenu.FloatLogoMenu;
+import com.yw.game.floatmenu.FloatMenuView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,10 +134,91 @@ public class HomePageActivity extends BaseFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarColor(ColorFinal.HOME_COLOR);
         MobclickAgent.openActivityDurationTrack(false);
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_DUM_NORMAL);
-    }
 
+        /** 新版本 **/
+        new PgyUpdateManager.Builder()
+                .setForced(true)                //设置是否强制更新,非自定义回调更新接口此方法有用
+                .setUserCanRetry(false)         //失败后是否提示重新下载，非自定义下载 apk 回调此方法有用
+                .setDeleteHistroyApk(false)     // 检查更新前是否删除本地历史 Apk， 默认为true
+                .setUpdateManagerListener(new UpdateManagerListener() {
+                    @Override
+                    public void onNoUpdateAvailable() {
+                        //没有更新是回调此方法
+                        Log.d("pgyer", "there is no new version");
+                    }
+                    @Override
+                    public void onUpdateAvailable(AppBean appBean) {
+                        //有更新回调此方法
+                        Log.d("pgyer", "there is new version can update"
+                                + "new versionCode is " + appBean.getVersionCode());
+                        //调用以下方法，DownloadFileListener 才有效；
+                        //如果完全使用自己的下载方法，不需要设置DownloadFileListener
+                        PgyUpdateManager.downLoadApk(appBean.getDownloadURL());
+                    }
+
+                    @Override
+                    public void checkUpdateFailed(Exception e) {
+                        //更新检测失败回调
+                        //更新拒绝（应用被下架，过期，不在安装有效期，下载次数用尽）以及无网络情况会调用此接口
+                        Log.e("pgyer", "check update failed ", e);
+                    }
+                })
+                //注意 ：
+                //下载方法调用 PgyUpdateManager.downLoadApk(appBean.getDownloadURL()); 此回调才有效
+                //此方法是方便用户自己实现下载进度和状态的 UI 提供的回调
+                //想要使用蒲公英的默认下载进度的UI则不设置此方法
+                .setDownloadFileListener(new DownloadFileListener() {
+                    @Override
+                    public void downloadFailed() {
+                        //下载失败
+                        Log.e("pgyer", "download apk failed");
+                    }
+
+                    @Override
+                    public void downloadSuccessful(Uri uri) {
+                        Log.e("pgyer", "download apk failed");
+                        // 使用蒲公英提供的安装方法提示用户 安装apk
+                        PgyUpdateManager.installApk(uri);
+                    }
+
+                    @Override
+                    public void onProgressUpdate(Integer... integers) {
+                        Log.e("pgyer", "update download apk progress" + integers);
+                    }})
+                .register();
+
+        MessageReceiver mMessageReceiver = new MessageReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MQController.ACTION_AGENT_INPUTTING);
+        intentFilter.addAction(MQController.ACTION_NEW_MESSAGE_RECEIVED);
+        intentFilter.addAction(MQController.ACTION_CLIENT_IS_REDIRECTED_EVENT);
+        intentFilter.addAction(MQController.ACTION_INVITE_EVALUATION);
+        intentFilter.addAction(MQController.ACTION_AGENT_STATUS_UPDATE_EVENT);
+        intentFilter.addAction(MQController.ACTION_BLACK_ADD);
+        intentFilter.addAction(MQController.ACTION_BLACK_DEL);
+        intentFilter.addAction(MQController.ACTION_QUEUEING_REMOVE);
+        intentFilter.addAction(MQController.ACTION_QUEUEING_INIT_CONV);
+        intentFilter.addAction(MQMessageManager.ACTION_END_CONV_AGENT);
+        intentFilter.addAction(MQMessageManager.ACTION_END_CONV_TIMEOUT);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, intentFilter);
+        initFloatingView();
+    }
+    /**
+     * 设置状态栏的颜色
+     */
+    public void setStatusBarColor(int color){
+        //当FitsSystemWindows设置 true 时，会在屏幕最上方预留出状态栏高度的 padding
+        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
+        //设置状态栏透明
+//        StatusBarUtil.setTranslucentStatus(this)
+        if (color == 0){
+            color = ColorFinal.NORMAL_COLOR;
+        }
+        StatusBarUtil.setStatusBarColor(this, color);
+    }
 //    private void initTrafficInfo() {
 //        try {
 //            mHandler = new Handler() {
@@ -368,7 +496,7 @@ public class HomePageActivity extends BaseFragmentActivity {
         super.onResume();
         MobclickAgent.onResume(this);
         Glide.with(getApplicationContext()).resumeRequests();
-//        getLiuLiang();
+
     }
 
     private TrafficInfo trafficInfo;
@@ -403,10 +531,206 @@ public class HomePageActivity extends BaseFragmentActivity {
         long intervalMillis = 10 * 1000L;           //第一次调用startUpdateSilent出现弹窗后，如果10秒内进行第二次调用不会查询更新
         UpdateHelper.getInstance().autoUpdate(getPackageName(), false, intervalMillis);
     }
+    FloatWindow.B floatingView;
+    public void initFloatingView(){
+        setView();
+//        floatingView = FloatWindow.with(getApplicationContext())
+//                .setView(view)
+//                .setWidth(Screen.width, 0.2f) //设置悬浮控件宽高
+//                .setHeight(Screen.width, 0.2f)
+//                .setX(Screen.width, 0.8f)
+//                .setY(Screen.height, 0.3f)
+//                .setMoveType(MoveType.slide,100,-100)
+//                .setMoveStyle(500, new BounceInterpolator())
+//                .setDesktopShow(false);
+//        floatingView.build();
+    }
+    View view = null;
+    TextView tv;
+    public void setView(){
+        view = LayoutInflater.from(this).inflate(R.layout.kefulayout, null);
+        tv = view.findViewById(R.id.contentSize);
+    }
+    public void setFloatingView(String size){
+        try{
+            if (FloatWindow.get().isShowing()){
+                FloatWindow.destroy();
+            }
+        }catch (NullPointerException e){
+            Log.e("第一次", "show");
+        }
 
+//        ImageView imageView = new ImageView(getApplicationContext());
+//        imageView.setImageResource(R.mipmap.img_banner_normal);
+        tv.setText(size);
+//        floatingView.setView(view).setViewStateListener(mViewStateListener)
+//                .setPermissionListener(mPermissionListener);
+        FloatWindow
+                .with(getApplicationContext())
+                .setFilter(false, MQConversationActivity.class)
+//                .setFilter(true, GoodsDetailActivity.class)
+//                .setFilter(true, HomePageActivity.class)
+                .setView(view)
+                .setWidth(Screen.width, 0.2f) //设置悬浮控件宽高
+                .setHeight(Screen.width, 0.2f)
+                .setX(Screen.width, 0.8f)
+                .setY(Screen.height, 0.3f)
+                .setMoveType(MoveType.slide,-100,-100)
+                .setMoveStyle(500, new BounceInterpolator())
+                .setViewStateListener(mViewStateListener)
+                .setPermissionListener(mPermissionListener)
+                .setDesktopShow(true)
+                .build();
+        FloatWindow.get().show();
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                conversationWrapper();
+                Toast.makeText(HomePageActivity.this, "onClick", Toast.LENGTH_SHORT).show();
+                FloatWindow.get().hide();
+                FloatWindow.destroy();
+            }
+        });
+    }
+    /*private String getRunningActivityName() {
+        String contextString = MQConversationActivity.this.toString();
+        return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
+    }*/
+    private String getRunningActivityName(){
+        ActivityManager activityManager=(ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        String runningActivity=activityManager.getRunningTasks(1).get(0).topActivity.getClassName();
+        return runningActivity;
+    }
+    private PermissionListener mPermissionListener = new PermissionListener() {
+        @Override
+        public void onSuccess() {
+            Log.d(TAG, "onSuccess");
+        }
+
+        @Override
+        public void onFail() {
+            Log.d(TAG, "onFail");
+        }
+    };
+
+    private final static String TAG = "FloatingView";
+
+    private ViewStateListener mViewStateListener = new ViewStateListener() {
+        @Override
+        public void onPositionUpdate(int x, int y) {
+            Log.d(TAG, "onPositionUpdate: x=" + x + " y=" + y);
+        }
+
+        @Override
+        public void onShow() {
+            Log.d(TAG, "onShow");
+        }
+
+        @Override
+        public void onHide() {
+            Log.d(TAG, "onHide");
+        }
+
+        @Override
+        public void onDismiss() {
+            Log.d(TAG, "onDismiss");
+        }
+
+        @Override
+        public void onMoveAnimStart() {
+            Log.d(TAG, "onMoveAnimStart");
+        }
+
+        @Override
+        public void onMoveAnimEnd() {
+            Log.d(TAG, "onMoveAnimEnd");
+        }
+
+        @Override
+        public void onBackToDesktop() {
+            Log.d(TAG, "onBackToDesktop");
+        }
+    };
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(final Context context, Intent intent) {
+            if (getRunningActivityName().equals("com.meiqia.meiqiasdk.activity.MQConversationActivity")){
+                return;
+            }
+            MQMessageManager messageManager = MQMessageManager.getInstance(context);
+            // 获取 ACTION
+            final String action = intent.getAction();
+
+            // 接收新消息
+            if (MQMessageManager.ACTION_NEW_MESSAGE_RECEIVED.equals(action)) {
+                // 从 intent 获取消息 id
+                String msgId = intent.getStringExtra("msgId");
+                // 从 MCMessageManager 获取消息对象
+
+                MQMessage message = messageManager.getMQMessage(msgId);
+                String msg = message.getContent();
+                TSnackbar snackbar = TSnackbar.make(getWindow().getDecorView().getRootView(), msg, TSnackbar.LENGTH_LONG);
+                snackbar.setActionTextColor(Color.WHITE);
+                View snackbarView = snackbar.getView();
+                snackbarView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                TextView textView = snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+                textView.setTextColor(Color.BLACK);
+                snackbar.setActionTextColor(Color.BLACK);
+                snackbar.setAction("点击查看", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        conversationWrapper();
+                    }
+                });
+                Toast.makeText(context, "客服消息：" + msg, Toast.LENGTH_SHORT).show();
+                snackbar.show();
+                MQManager.getInstance(context).getUnreadMessages(new OnGetMessageListCallback() {
+                    @Override
+                    public void onFailure(int i, String s) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(List<MQMessage> list) {
+                        setFloatingView(String.valueOf(list.size()));
+                    }
+                });
+
+                // do something
+            }
+
+            // 客服正在输入
+            else if (MQMessageManager.ACTION_AGENT_INPUTTING.equals(action)) {
+                // do something
+            }
+
+            // 客服转接
+            else if (MQMessageManager.ACTION_AGENT_CHANGE_EVENT.equals(action)) {
+                // 获取转接后的客服
+                MQAgent mqAgent = messageManager.getCurrentAgent();
+                // do something
+            }
+        }
+    }
     /**
-//     * 百度更新
-//     */
+     * 美洽客服
+     */
+    private void conversationWrapper() {
+        HashMap<String, String> clientInfo = new HashMap<>();
+//        clientInfo.put("name", goodsDetailModel.getUser().getNickname());
+//        clientInfo.put("avatar", AppConfig.main + goodsDetailModel.getUser().getAvatar());
+        Intent intent = new MQIntentBuilder(mContext)
+                .setClientInfo(clientInfo)
+//                .setPreSendTextMessage("商品名称:" + goodsDetailModel.getGoods().getTitle() + "\n商品链接:" + goodsDetailModel.getUser().getLink())
+//                .setPreSendImageMessage(new File(goodsDetailModel.getGoods().getThumb()))
+                .build();
+        startActivity(intent);
+    }
+    /**
+     //     * 百度更新
+     //     */
 //    private void checkBauDuVersionCode() {
 //        BDAutoUpdateSDK.cpUpdateCheck(this, new MyCPCheckUpdateCallback());
 //    }

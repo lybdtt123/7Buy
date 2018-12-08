@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.haoniu.zzx.app_ts"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 18
-        versionName "1.4.5"
+        minSdkVersion 19
+//        minSdkVersion 'o at least 1'
+        targetSdkVersion 26
+        versionCode 21
+        versionName "1.5.2"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -75,7 +76,7 @@ dependencies {
     compile project(':AndroidBase')
     // ~80KB
     compile project(':banner')
-    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
@@ -119,6 +120,17 @@ dependencies {
     compile files('libs/wechat-sdk-android-without-mta-5.1.4.jar')
     compile files('libs/umeng-share-sina-full-6.9.3.jar')
     compile files('libs/weiboSDKCore.jar')
+    /**
+     *    沉浸式状态栏
+     */
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile files('libs/pgyer_sdk_3.0.2.jar')
+//    compile 'com.github.yhaolpz:FloatWindow:1.0.9'
+//    compile 'com.github.lijiahua:FloatWindow:1.0.13'
+//    compile 'com.irozon.sneaker:sneaker:1.0.3'
+    compile 'com.androidadvance:topsnackbar:1.1.1'
+    compile project(':floatwindow')
+    compile 'com.yw.game.floatmenu:FloatMenu:2.0.1'
 }
 allprojects {
     repositories {

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,12 +15,18 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import com.awen.photo.FrescoImageLoader;
 import com.haoniu.zzx.app_ts.BuildConfig;
 import com.haoniu.zzx.app_ts.Constant;
+import com.haoniu.zzx.app_ts.R;
 import com.haoniu.zzx.app_ts.activity.WebviewActivity;
 import com.haoniu.zzx.app_ts.utils.DynamicTimeFormat;
 import com.haoniu.zzx.app_ts.utils.PreferenceUtils;
@@ -43,6 +50,11 @@ import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareConfig;
 import com.umeng.socialize.common.QueuedWork;
+import com.yhao.floatwindow.FloatWindow;
+import com.yhao.floatwindow.MoveType;
+import com.yhao.floatwindow.PermissionListener;
+import com.yhao.floatwindow.Screen;
+import com.yhao.floatwindow.ViewStateListener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,10 +74,13 @@ public class AppContext extends SelfAppContext {
     public Boolean isOpen = false;
     private List activityList = new LinkedList();
     public String COOKIE = "COOKIE";
+    private final static String TAG = "AppContext";
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+
         UMConfigure.setLogEnabled(true);
         appContext = this;
         FrescoImageLoader.init(this);
@@ -82,8 +97,12 @@ public class AppContext extends SelfAppContext {
         OkGo.getInstance().init(this);
         initMeiqiaSDK();
         setSmartRefreshLayout();
-    }
 
+
+//        mIntentFilter.addAction("message");
+
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
+    }
     /**
      * 下拉刷新全局设置
      */

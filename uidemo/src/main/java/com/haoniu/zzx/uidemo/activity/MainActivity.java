@@ -10,7 +10,6 @@ import com.haoniu.zzx.uidemo.R;
 import com.haoniu.zzx.uidemo.adapter.AdapterMain;
 import com.haoniu.zzx.uidemo.model.MainClickModel;
 import com.qmuiteam.qmui.widget.QMUITopBar;
-import com.tencent.bugly.beta.Beta;
 
 import java.util.ArrayList;
 import java.util.List;

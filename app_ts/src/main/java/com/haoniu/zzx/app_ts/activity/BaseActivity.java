@@ -57,6 +57,8 @@ import com.bumptech.glide.Glide;
 import com.haoniu.zzx.app_ts.R;
 import com.haoniu.zzx.app_ts.myinterface.CommonEnity;
 import com.haoniu.zzx.app_ts.myinterface.EventInterface;
+import com.haoniu.zzx.app_ts.statusbar.ColorFinal;
+import com.haoniu.zzx.app_ts.statusbar.StatusBarUtil;
 import com.haoniu.zzx.app_ts.utils.L;
 import com.haoniu.zzx.app_ts.utils.StringUtils;
 import com.haoniu.zzx.app_ts.utils.ToastUtils;
@@ -464,8 +466,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 使用 Glide 作为图片加载器时，保存图片到相册使用的方法
-     *
-     * @param imageView
      */
 //    protected void saveImageByGlide(ImageView imageView) {
 //        if (checkWriteStoragePermission()) {

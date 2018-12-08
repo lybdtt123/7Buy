@@ -1,2 +1,2 @@
-include ':app', ':AndroidBase', ':takephoto_library', ':app_ts', ':uidemo', 'banner', ':speechDemo', ':stickylibrary', ':vlayout'
+include ':app', ':AndroidBase', ':takephoto_library', ':app_ts', ':uidemo', 'banner', ':speechDemo', ':stickylibrary', ':vlayout', ":floatwindow"
 //include ':bDIntegrationSDK_LibProject'

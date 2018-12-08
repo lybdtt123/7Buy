@@ -193,7 +193,7 @@ public class HomeNewAdapter extends RecyclerView.Adapter {
 
                     initTitleImg(mListData, 3, vh.mImgTitle);
 
-                    initRcAdapter(mListData, 3, vh.mMyRc1,  0);
+//                    initRcAdapter(mListData, 3, vh.mMyRc1,  0);
 
                     LinearLayoutManager lm1 = new GridLayoutManager(mContext, 3);
                     lm1.setOrientation(LinearLayoutManager.VERTICAL);
@@ -216,7 +216,7 @@ public class HomeNewAdapter extends RecyclerView.Adapter {
 
                     initTitleImg(mListData, 7, vh.mImgTitle);
 
-                    initRcAdapter(mListData, 7, vh.mMyRc1,  0);
+//                    initRcAdapter(mListData, 7, vh.mMyRc1,  0);//lyb -- 删除横向滑动
 
 
                     LinearLayoutManager lm1 = new GridLayoutManager(mContext, 3);

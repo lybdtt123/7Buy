@@ -143,8 +143,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void requestPermissions(){
 		try {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-				int permission = ActivityCompat.checkSelfPermission(this,
-						Manifest.permission.WRITE_EXTERNAL_STORAGE);
+				int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 				if(permission!= PackageManager.PERMISSION_GRANTED) {
 					ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
 							Manifest.permission.LOCATION_HARDWARE,Manifest.permission.READ_PHONE_STATE,

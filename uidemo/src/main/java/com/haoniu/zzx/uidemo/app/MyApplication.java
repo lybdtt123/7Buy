@@ -2,8 +2,6 @@ package com.haoniu.zzx.uidemo.app;
 
 import android.app.Application;
 
-import com.tencent.bugly.Bugly;
-
 /**
  * Created by zzx on 2017/11/9 0009.
  */
